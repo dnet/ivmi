@@ -1,4 +1,4 @@
-sudo: false
+sudo: required
 dist: trusty
 language: cpp
 compiler: gcc
@@ -10,6 +10,11 @@ addons:
             - libzmq3-dev
             - libzmqpp3
             - libzmqpp-dev
+            - libjson-c-dev
+            - libxen-dev
+install:
+    - cd drakvuf/libvmi && ./autogen.sh && ./configure --enable-xen --without-xenstore
+    - make && sudo make install
 script:
     - mkdir build
     - cd build
