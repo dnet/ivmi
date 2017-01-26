@@ -16,8 +16,7 @@ install:
     - cd drakvuf/libvmi && ./autogen.sh && ./configure --enable-xen --without-xenstore
     - make && sudo make install
 script:
-    - mkdir build
-    - cd build
+    - cd ../.. && mkdir build && cd build
     - cmake ..
     - make
 os:
